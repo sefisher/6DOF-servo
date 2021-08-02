@@ -28,19 +28,22 @@ WiFiUDP Udp; // Creation of wifi Udp instance
 //=====SERVO BOARD SETTINGS
 // called this way, it uses the default address 0x40
 Adafruit_PWMServoDriver board1 = Adafruit_PWMServoDriver(0x40);
-//Adafruit_PWMServoDriver board2 = Adafruit_PWMServoDriver(0x41);
+//Adafruit_PWMServoDriver board2 = Adafruit_PWMServoDriver(0x41); //this is for a second board if for some reason you have more than 16 servos
 
 // Depending on your servo make, the pulse width min and max may vary, you
 // want these to be as small/large as possible without hitting the hard stop
-// for max range. You'll have to tweak them as necessary to match the servos you
-// have!
-// Watch video V1 to understand the two lines below: http://youtu.be/y8X9X10Tn1k
+// for max range. You'll have to tweak them as necessary to match your servos.
+
+// You can watch video V1 here to understand the servos: http://youtu.be/y8X9X10Tn1k
 // #define SERVOMIN 125 // this is the 'minimum' pulse length count (out of 4096)
 // #define SERVOMAX 575 // this is the 'maximum' pulse length count (out of 4096)
 
-// FOR Smraza 10 Pcs SG90 9G Micro Servo Motor (https://www.amazon.com/gp/product/B07L2SF3R4)
-// the max is 575 and at 60Hz the 141 is about 180degrees CW from 575; 
+// For the Smraza 10 Pcs SG90 9G Micro Servo Motor (https://www.amazon.com/gp/product/B07L2SF3R4)
+// the max is 575 and at 60Hz setting the min to 141 puts the servo arm about 180degrees CW 
+// the from 575 position - so this works for a 0 to 180 degree range of motion; 
 // using these to set a 0 angle (141) and 180 angle (590)
+
+//NOTE: Using these servos in a "linear" actuator doesn't result in linear motion.
 #define SERVOMIN 141 // this is the 'minimum' pulse length count (out of 4096)
 #define SERVOMAX 575 // this is the 'maximum' pulse length count (out of 4096)
 
@@ -53,23 +56,19 @@ void blink_short();
 int angleToPulse(int ang);
 void ConnectToWiFi();
 
-
 void setup()
-{
-    
+{    
   pinMode(ONBOARD_LED,OUTPUT);
     Serial.begin(9600);
 
   if(USE_WIFI_AND_UDP_FOR_FLYPTMOVER){
     ConnectToWiFi();
   }
-  if(STREAM_SERIAL_OUTPUT){
-    Serial.println("==============================\n=====2 channel Servo Test=====\n==============================");
+  Serial.println("==============================\n==========Servo Test==========\n==============================");
     if(ALLOW_SERIAL_INPUT){
       Serial.println("Enter 'a' for entering angles; Enter 'p' for entering pulse width directly; or 'o' to turn off serial input control.");
       Serial.println("**WARNING** - Pulse width entries go to servo ignoring SERVOMAX or SERVOMIN and can cause damage ot servo.");
       Serial.println("\n====ENTER SERVO ANGLE TO MOVE SERVOS====\n");
-    }
   }
   board1.begin();
   // board2.begin(); //this is for adding mulitple boards if we arecontorlling more than 16 servos.
@@ -91,9 +90,10 @@ void loop()
         //Serial.print(packetSize);Serial.print(" / ");
         Serial.println(packetBuffer);
       }
-      //FLYPTMOVER UDP OUTPUT IS SET UP TO SEND THE FOLLOWING:
-      //STRING OF 6 AXIS POSITIONS USING A 12 BIT SCALE (0 TO 4095)
-      //EACH AXIS IS SEPARATED BY A ';':  2295;1367;3548;2512;1971;745; 
+
+      //FLYPTMOVER UDP OUTPUT SHOULD BE SET UP TO SEND THE FOLLOWING:
+      //STRING OF 6 AXIS POSITIONS USING DECIMAL FORMAT ON A 12 BIT SCALE (0 TO 4095)
+      //EACH AXIS IS SEPARATED BY A ';' (e.g., "2295;1367;3548;2512;1971;745;")
       
       //Parse the UDP input string and send update positions to the number of actuators connected.
       int count=0;
@@ -171,7 +171,6 @@ void loop()
       inString = "";
     }
   }
-  //delay(100);
 }
 
 /*
