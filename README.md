@@ -54,7 +54,7 @@ To test the actuator setup and ensure the calibration for your servos:
 
 1. Wire up the ESP32, PCA9685, and your servos without connecting them to the 6DOF Rig.
 
-![](/img/6DOF - ESP32 - PCS9685 - Layout_bb.png)
+![](/img/wiring.png)
 
 2. Connect the ESP32 to your PC via USB.
 3. Click "Monitor" in VSCODE (the plug icon at the bottom of VSCODE; this should reset the ESP32 and open a serial connection).
