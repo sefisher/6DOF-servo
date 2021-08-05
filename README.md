@@ -14,6 +14,7 @@ For now this How-to is limited to the desktop sized test rig using open source s
 Following these steps should take about a workday (plus printing time).
 
 ![](/img/front-image.png)
+<img src="front-image.png" width="400"/>
 
 ### Setting up Hardware:
 
