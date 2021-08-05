@@ -13,8 +13,8 @@ For now this How-to is limited to the desktop sized test rig using open source s
 # How-to make a desktop model to see how the hexapod works and see it move with FlyPT-Mover and your racing or flight simulator games.  
 Following these steps should take about a workday (plus printing time).
 
-![](/img/front-image.png)
 <img src="/img/front-image.png" width="400"/>
+https://user-images.githubusercontent.com/6901860/128341217-a80dd36d-bdde-4e3c-92ce-daf63e1e8028.mp4
 
 ### Setting up Hardware:
 
@@ -203,7 +203,7 @@ To test the actuator setup and ensure the calibration for your servos:
 
 7. Watch the rig follow the 3D viewer motion.
 
-\>>TODO: add images.
+https://user-images.githubusercontent.com/6901860/128340775-fc95757a-c2b8-47d3-b3ef-ff1ae54d46d5.MOV
 
 ------
 
