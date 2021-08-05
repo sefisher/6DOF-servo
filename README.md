@@ -106,21 +106,21 @@ To test the actuator setup and ensure the calibration for your servos:
    1. Right click on the interface     and select ">Add>Source>Loop"
    2. Check "Yaw speed"     and uncheck all the other options on the right. Set up:
 
-    ![](img\yawspeed.png)
+    ![](/img/yawspeed.png)
 
    ROLL POSITION
 
    1. Right click on the interface     and select ">Add>Source>Loop"
    2. Check "Roll     position" and uncheck all the other options on the right. Set up:
 
-    ![](img\rollposition.png)
+    ![](/img/rollposition.png)
 
    PITCH POSITION
 
    1. Right click on the interface     and select ">Add>Source>Loop"
    2. Check "Pitch     position" and uncheck all the other options on the right. Set up:
 
-    ![](img\pitchposition.png)
+    ![](/img/pitchposition.png)
 
    
 
@@ -130,7 +130,7 @@ To test the actuator setup and ensure the calibration for your servos:
 
    2. ii. Check SOURCE::LOOP;      SOURCE::LOOP (1); SOURCE::LOOP (2) on right. (This links the sources to this pose calculation):
 
-    ![](img\pose.png)
+    ![](/img/pose.png)
 
    
 
@@ -138,13 +138,13 @@ To test the actuator setup and ensure the calibration for your servos:
 
    1. 1. Right click on  the interface and select ">Add>Rig>From Motion"
 
-    ![](img\addrig.png)
+    ![](/img/addrig.png)
 
    
 
    ​		2. Edit the Rig "Position bit output" setting to 12 and check "POSE::FROM MOTION" for the source of motion.          
 
-    ![](img\editrig.png)
+    ![](/img/editrig.png)
 
    ​		3. Use the calculations spreadsheet (6DOF_Calulations_v2.xlsx) that is provided with the Thingiverse model (https://www.thingiverse.com/thing:2038246/files) to calculate the L1, L2, L3, L4 dimensions:
 
@@ -158,7 +158,7 @@ To test the actuator setup and ensure the calibration for your servos:
       4. Type of Output should be "Decimal"
       5. The Output string should be "<Axis1a>;<Axis2a>;<Axis3a>;<Axis4a>;<Axis5a>;<Axis6a>;"  (semi-colons are needed to parse text in code):
 
-    ![](img\output.png)
+    ![](/img/output.png)
 
    ##### Add a 3D viewer to watch the model move and make sure is working.
 
@@ -171,15 +171,15 @@ To test the actuator setup and ensure the calibration for your servos:
 
 1. In FlyPT-Mover virtually "connect" the sources (click the little square in upper left of each of the sources). They turn red when they are connected:
 
-   ![](img\connectoutput.png)
+   ![](/img/connectoutput.png)
 
 2. Look at the 3D Viewer and Rig (click the squares in upper right of those controls in FylPT to open them) to verify it is moving and the actuator position test is showing the calculated results and shifting left and right.
 
-   ![](img\seemotion.png)
+   ![](/img/seemotion.png)
 
 3. Check or physically connect the ESP32/PCA9685/Rig-servos to together and power them (**Note:** you should use a dedicated 5V power supply with at least a few amps to power the PCA9685 to avoid overloading the EPS32 regulators).
 
 4. In FlyPT-Mover virtually "connect" the output (click the little square in upper left of output-UDP); it will turn red when on and the actuators should start moving.
 
-   ![](img\connectoutput.png)
+   ![](/img/connectoutput.png)
 
