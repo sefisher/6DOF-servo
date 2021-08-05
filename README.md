@@ -2,25 +2,26 @@
 
 I'm working on building a 6 degree of freedom (6 DOF) Motion Simulator (also called a Stewart Platform or hexapod).  This Git repository is for some testing code and a short tutorial to help people doing the same thing get up to speed faster as I learn. There are lots of examples of similar projects. And some great examples of some full-scale truly DIY platforms including home-built actuators (e.g,, SilentChill - https://www.youtube.com/channel/UCNbwVIbv1c_SO7rM1etFW1g and Peacemaker Motion - https://www.youtube.com/watch?v=Ewiyuy38aO8). But I found it hard to get started from ground zero as lots of the experts are (thankfully) actively developing software and hardware and not spending a ton of time making tutorials for newbies like me.
 
-End goal: I plan on making something similar to the Silent Chill or Peacemaker Motion rig.  It will probably not have screens since I'll use my Oculus.  I have a gaming PC with SteamVR and the Oculus Quest 2.  I just recently got Asetto Corsa and will use it as a source in the near future.  
+End goal: I plan on making something similar to the Silent Chill or Peacemaker Motion rig (see xsimulator.net).  It will probably not have screens since I'll use my Oculus.  I have a gaming PC with SteamVR and the Oculus Quest 2.  I just recently got Asetto Corsa and will use it as a source in the near future.  
 
-Since the motion simulator hardware involves high power (most people use 240V input and rigs can consume up to 3KW at peak), are dangerous (actuators need to move people around quickly), and use somewhat expensive gear, I'm working on some desktop testing to tinker until I'm ready to commit to full scale.
+Since the motion simulator hardware involves high power (lots of people use 240V input and I see designs using power supplies sized to consume up to 3KW at peak), are dangerous (actuators need to move people around quickly), and use somewhat expensive gear, I'm working on some desktop testing to tinker until I'm ready to commit to full scale.
 
-For now this How-to is limited to the desktop sized test rig.
-
-## How-to make a desktop scaled model to test to see how the hexapod works and get it ready to run with FlyPT-Mover and your racing or flight simulator games.  
+For now this How-to is limited to the desktop sized test rig using open source software and shared models. 
 
 ------
 
+# How-to make a desktop model to see how the hexapod works and see it move with FlyPT-Mover and your racing or flight simulator games.  
+Following these steps should take about a workday (plus printing time).
+
 ### Setting up Hardware:
 
-**Servos**: Start with some cheap servos (need 6, this is 10): https://www.amazon.com/gp/product/B07L2SF3R4
+**Servos**: Start with some cheap servos (need 6, this link is for 10): https://www.amazon.com/gp/product/B07L2SF3R4
 
 **Model:** Make a 3D printed "Rig" ("rig is a FlyPT-Mover term). Here is a nice Thingiverse model for this: https://www.thingiverse.com/thing:2038246/files
 
 **Servo Driver Board:** Get a PCA9685 (recommended, but not really required if you're using an ESP32). This makes servo hookup easy and this is what my code assumes.  This allows easy hookup of separate servo power supply. There are slightly cheaper ones, but this works well:  https://www.amazon.com/HiLetgo-PCA9685-Channel-12-Bit-Arduino/dp/B01D1D0CX2
 
-**ESP32 Control Board:** Get a ESP32 dev board; this is nice since it is pretty fast, low cost, can directly do PWM from any input, and has integrated WiFi. Any brand of dev board should work, you'll just need to the know the board model for PlatformIO to configure itself for building and uploading.  I used this:  https://www.amazon.com/HiLetgo-ESP-WROOM-32-Development-Microcontroller-Integrated/dp/B0718T
+**ESP32 Control Board:** Get a ESP32 dev board; this is nice since it is pretty fast, low cost, can directly do PWM from any input, and has integrated WiFi. Any brand of dev board should work, you'll just need to the know the board model for PlatformIO to configure itself for building and uploading.  I used this:  https://www.amazon.com/HiLetgo-ESP-WROOM-32-Development-Microcontroller-Integrated/dp/B0718T232Z/
 
 ------
 
@@ -53,7 +54,7 @@ To test the actuator setup and ensure the calibration for your servos:
 
 1. Wire up the ESP32, PCA9685, and your servos without connecting them to the 6DOF Rig.
 
-\>>TODO: Add pictures of wiring, 
+:::image type="content" source="6DOF - ESP32 - PCS9685 - Layout_bb.png" alt-text="\>>Picture of wiring, ":::
 
 2. Connect the ESP32 to your PC via USB.
 3. Click "Monitor" in VSCODE (the plug icon at the bottom of VSCODE; this should reset the ESP32 and open a serial connection).
@@ -99,7 +100,7 @@ To test the actuator setup and ensure the calibration for your servos:
 
    You should see a blank interface:
 
-   ![](\img\blank.png)
+   ![](/img/blank.png)
 
    4. **Configure FlyPT-Mover:**
 
