@@ -1,8 +1,14 @@
 # 6DOF MOTION SIMULATOR TESTING
 
-Working on building a 6 degree of freedom (6 DOF) Motion Simulator (Stewart Platform); also called a hexapod.  This Git repository is for some testing code and a short tutorial to help people doing the same thing get up to speed faster as I learn.
+I'm working on building a 6 degree of freedom (6 DOF) Motion Simulator (also called a Stewart Platform or hexapod).  This Git repository is for some testing code and a short tutorial to help people doing the same thing get up to speed faster as I learn. There are lots of examples of similar projects. And some great examples of some full-scale truly DIY platforms including home-built actuators (e.g,, SilentChill - https://www.youtube.com/channel/UCNbwVIbv1c_SO7rM1etFW1g and Peacemaker Motion - https://www.youtube.com/watch?v=Ewiyuy38aO8). But I found it hard to get started from ground zero as lots of the experts are (thankfully) actively developing software and hardware and not spending a ton of time making tutorials for newbies like me.
 
-## Making a desktop scaled model to test to see what all this does and wire everything together:
+End goal: I plan on making something similar to the Silent Chill or Peacemaker Motion rig.  It will probably not have screens since I'll use my Oculus.  I have a gaming PC with SteamVR and the Oculus Quest 2.  I just recently got Asetto Corsa and will use it as a source in the near future.  
+
+Since the motion simulator hardware involves high power (most people use 240V input and rigs can consume up to 3KW at peak), are dangerous (actuators need to move people around quickly), and use somewhat expensive gear, I'm working on some desktop testing to tinker until I'm ready to commit to full scale.
+
+For now this How-to is limited to the desktop sized test rig.
+
+## How-to make a desktop scaled model to test to see how the hexapod works and get it ready to run with FlyPT-Mover and your racing or flight simulator games.  
 
 ------
 

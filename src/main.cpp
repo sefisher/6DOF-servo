@@ -10,7 +10,7 @@
 //#define WIFIPSWD "Your Wifi AP Password"
 
 #define USE_WIFI_AND_UDP_FOR_FLYPTMOVER true
-#define ALLOW_SERIAL_INPUT true
+#define ALLOW_SERIAL_INPUT false
 #define STREAM_SERIAL_OUTPUT false
 
 #define NUM_ACTUATORS 6
@@ -19,7 +19,7 @@
 #define ONBOARD_LED  2
 
 //=====UDP COMMS SETTINGS
-#define UDP_PORT 8266
+#define UDP_PORT 9777
 #define INPUT_SIZE 255
 char packetBuffer[INPUT_SIZE];
 unsigned int localPort = UDP_PORT;
@@ -39,12 +39,12 @@ Adafruit_PWMServoDriver board1 = Adafruit_PWMServoDriver(0x40);
 // #define SERVOMAX 575 // this is the 'maximum' pulse length count (out of 4096)
 
 // For the Smraza 10 Pcs SG90 9G Micro Servo Motor (https://www.amazon.com/gp/product/B07L2SF3R4)
-// the max is 575 and at 60Hz setting the min to 141 puts the servo arm about 180degrees CW 
+// the max is 575 and at 60Hz setting the min to 128 puts the servo arm about 180degrees CW 
 // the from 575 position - so this works for a 0 to 180 degree range of motion; 
 // using these to set a 0 angle (141) and 180 angle (590)
 
 //NOTE: Using these servos in a "linear" actuator doesn't result in linear motion.
-#define SERVOMIN 141 // this is the 'minimum' pulse length count (out of 4096)
+#define SERVOMIN 128 // this is the 'minimum' pulse length count (out of 4096)
 #define SERVOMAX 575 // this is the 'maximum' pulse length count (out of 4096)
 
 int servoNumber = 0;
@@ -106,7 +106,10 @@ void loop()
         if(STREAM_SERIAL_OUTPUT){
           Serial.print(count);Serial.print(": ");Serial.print(actpos);Serial.print(" scaled: ");Serial.println(scaledpos);
         }
-        if(count < NUM_ACTUATORS) board1.setPWM(count, 0, angleToPulse(scaledpos));
+        if(count < NUM_ACTUATORS) {
+          board1.setPWM(count, 0, angleToPulse(scaledpos));
+          if(STREAM_SERIAL_OUTPUT){Serial.print("Servo ");Serial.print(count);Serial.print(" updated.");}
+        }
         // Find the next command in input string
         axis = strtok(0, ";");
         count++;
@@ -150,8 +153,9 @@ void loop()
             Serial.print("turning servo to ");
             Serial.print(state);
             Serial.println(" degrees");
-            board1.setPWM(0, 0, angleToPulse(state));
-            board1.setPWM(1, 0, angleToPulse(state));
+            for(int i=0;i<NUM_ACTUATORS;i++){
+              board1.setPWM(i, 0, angleToPulse(state));
+            }
           }
         }
         else if(inputMode==1) //Pulse Input
@@ -163,8 +167,9 @@ void loop()
           Serial.print("sending servo ");
           Serial.print(state);
           Serial.println(" as pulse width.");
-          board1.setPWM(0, 0, state);
-          board1.setPWM(1, 0, state);
+          for(int i=0;i<NUM_ACTUATORS;i++){
+            board1.setPWM(i, 0, state);
+          }
         }
       }
       // clear the string for new input:
