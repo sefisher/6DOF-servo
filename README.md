@@ -172,7 +172,7 @@ To test the actuator setup and ensure the calibration for your servos:
 
    ##### Add a 3D viewer to watch the model move and make sure is working.
 
-   1. Right click on the interface and select ">Add>Viewer>3D"); then select your Rig.
+   1. Right click on the interface and select ">Add>Viewer>3D"; then select your Rig.
 
 ------
 
@@ -210,7 +210,14 @@ https://user-images.githubusercontent.com/6901860/128340775-fc95757a-c2b8-47d3-b
 
 ### Connect a game source:
 
-1. Just like you added a loop source before, now add your game source. I am using Assetto Corsa Competizione here; but Flight Simulator, Epic Coaster Simulator, and others all work similarly.  Google for specific "start-up" instructions for each game.
+Just like you added a loop source before, now add your game source. I am using Assetto Corsa Competizione here; but Flight Simulator, Epic Coaster Simulator, and others all work similarly.  Google for specific "start-up" instructions for each game.
 
-   \>>TODO:: Add these instructions and images
+   1. Right click on the interface and select ">Add>Source>Assetto Corsa and Assetto Corsa Competizioni (MMF)"
+    ![](/img/add-game-source.png)
+   (**Note:** This game requires no setup, you simply have to run the game on the same PC that you are running FlyPT-Mover.)
+   1. Run the game.
+   1. Click on connect on the game source interface.
+   ![](/img/assetto.png)
+   1. Make sure any other sources are turned off (disconnected).
+   1. Click on connect on the UDP output interface.
 
